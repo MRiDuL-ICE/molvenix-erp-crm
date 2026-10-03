@@ -4,6 +4,7 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ObserveModule } from './observe.js';
 import { HealthModule } from './modules/health/health.module.js';
+import { DrizzleModule } from './drizzle/drizzle.module.js';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { HealthModule } from './modules/health/health.module.js';
       appSecret: process.env.OBSERVE_APP_SECRET || '',
       serviceId: 'molvenix-erp-crm',
     }),
+    DrizzleModule,
     HealthModule,
   ],
   controllers: [AppController],

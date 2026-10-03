@@ -9,13 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Controller, Get } from '@nestjs/common';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
+import { DatabaseHealthIndicator } from './database.health.js';
 let HealthController = class HealthController {
     health;
-    constructor(health) {
+    database;
+    constructor(health, database) {
         this.health = health;
+        this.database = database;
     }
     check() {
-        return this.health.check([]);
+        return this.health.check([() => this.database.isHealthy()]);
     }
 };
 __decorate([
@@ -27,7 +30,8 @@ __decorate([
 ], HealthController.prototype, "check", null);
 HealthController = __decorate([
     Controller('health'),
-    __metadata("design:paramtypes", [HealthCheckService])
+    __metadata("design:paramtypes", [HealthCheckService,
+        DatabaseHealthIndicator])
 ], HealthController);
 export { HealthController };
 //# sourceMappingURL=health.controller.js.map

@@ -9,6 +9,7 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ObserveModule } from './observe.js';
 import { HealthModule } from './modules/health/health.module.js';
+import { DrizzleModule } from './drizzle/drizzle.module.js';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -19,6 +20,7 @@ AppModule = __decorate([
                 appSecret: process.env.OBSERVE_APP_SECRET || '',
                 serviceId: 'molvenix-erp-crm',
             }),
+            DrizzleModule,
             HealthModule,
         ],
         controllers: [AppController],
