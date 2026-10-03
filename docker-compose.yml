@@ -1,0 +1,11 @@
+name: molvenix-erp-crm
+
+include:
+  - path: docker/compose/db.yml
+    project_directory: .
+  - path: docker/compose/redis.yml
+    project_directory: .
+  - path: docker/compose/app.yml
+    project_directory: .
+  - path: docker/compose/nginx.yml
+    project_directory: .
